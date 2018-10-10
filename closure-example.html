@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .counter {
+            margin: 10px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="counter">
+        Count : <span></span> &nbsp;
+        <button>+</button> &nbsp;
+        <button>-</button>
+    </div>
+
+    <hr>
+
+    <div class="counter">
+        Count : <span></span> &nbsp;
+        <button>+</button> &nbsp;
+        <button>-</button>
+    </div>
+        
+    <hr>
+
+    <div class="counter">
+        Count : <span></span> &nbsp;
+        <button>+</button> &nbsp;
+        <button>-</button>
+    </div>
+
+    <script>
+
+        var counters = document.getElementsByClassName('counter');
+
+        counters = Array.prototype.slice.call(counters);
+
+        counters.forEach(function(container){
+            var buttons = container.getElementsByTagName('button');
+            var counter = createCounter(container, buttons);                    
+            container.addEventListener('click', function(event){
+                container.getElementsByTagName('span').item(0).innerHTML = counter();
+            });
+        });            
+
+        function createCounter(container, counterButtons) {
+            var count  = 0;
+
+            counterButtons[0].addEventListener('click', function(event){
+                count++;
+            });
+
+            counterButtons[1].addEventListener('click', function(event){
+                count--;
+            });
+
+            var getCount = function(){
+                return count;
+            }
+
+            return getCount;
+        }
+        
+
+    </script>
+</body>
+</html>
